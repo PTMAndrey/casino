@@ -31,4 +31,7 @@ public class Card {
 
     private Integer sold;
 
+    @OneToOne(mappedBy = "card")
+    private Utilizator utilizator;
+
 }

@@ -20,4 +20,6 @@ public class Retragere {
     // idUtilizator
 
     private Integer sumaRetrasa;
+
+    private UUID idUtilizator;
 }

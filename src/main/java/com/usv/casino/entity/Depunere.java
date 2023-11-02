@@ -17,7 +17,7 @@ public class Depunere {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idDepunere;
 
-    // idUtilizator
-
     private Integer sumaDepusa;
+
+    private UUID idUtilizator;
 }

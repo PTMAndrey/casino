@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -42,6 +44,34 @@ public class Utilizator {
 
     @Column(unique=true)
     private String codReferal;
+    private UUID idBonusUtilizatorU;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCard", referencedColumnName = "idUtilizator")
+    private Card card;
+
+    @OneToMany(
+            targetEntity = Pariu.class,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name="idUtilizator", referencedColumnName = "idUtilizator")
+    private List<Pariu> pariuri = new ArrayList<>();
+
+    @OneToMany(
+            targetEntity = Depunere.class,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name="idUtilizator", referencedColumnName = "idUtilizator")
+    private List<Depunere> depuneri = new ArrayList<>();
+
+    @OneToMany(
+            targetEntity = Retragere.class,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name="idUtilizator", referencedColumnName = "idUtilizator")
+    private List<Retragere> retrageri = new ArrayList<>();
 
 }

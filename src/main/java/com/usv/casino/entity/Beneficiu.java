@@ -28,6 +28,6 @@ public class Beneficiu {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    @JoinColumn(name="idBeneficiu", referencedColumnName = "idBonus")
+    @JoinColumn(name="idBeneficiu", referencedColumnName = "idBeneficiu")
     private List<Bonus> beneficiu = new ArrayList<>();
 }

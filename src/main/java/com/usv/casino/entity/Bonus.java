@@ -20,4 +20,6 @@ public class Bonus {
 
     private UUID idBeneficiu;
 
+    private UUID idBonusUtilizatorB;
+
 }

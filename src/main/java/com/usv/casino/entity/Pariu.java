@@ -27,4 +27,7 @@ public class Pariu {
 
     private String rezultatPariu;
 
+    private UUID idUtilizator;
+
+    private UUID idJoc;
 }
