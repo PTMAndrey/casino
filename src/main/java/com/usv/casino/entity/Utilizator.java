@@ -47,7 +47,7 @@ public class Utilizator {
     private UUID idBonusUtilizatorU;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idCard", referencedColumnName = "idUtilizator")
+    @JoinColumn(name = "idUtilizator", referencedColumnName = "idUtilizator")
     private Card card;
 
     @OneToMany(
