@@ -46,9 +46,9 @@ public class Utilizator {
     private String codReferal;
     private UUID idBonusUtilizatorU;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUtilizator", referencedColumnName = "idUtilizator")
-    private Card card;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "idUtilizator", referencedColumnName = "idUtilizator")
+//    private Card card;
 
     @OneToMany(
             targetEntity = Pariu.class,
