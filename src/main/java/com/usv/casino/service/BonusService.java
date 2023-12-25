@@ -4,11 +4,12 @@ import com.usv.casino.entity.Beneficiu;
 import com.usv.casino.entity.Bonus;
 import com.usv.casino.exceptions.CrudOperationException;
 import com.usv.casino.repository.BonusRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+@Service
 public class BonusService {
 
     public static final String MESAJ_DE_EROARE = "Nu exista bonus";
@@ -25,7 +26,8 @@ public class BonusService {
         iterableBonus.forEach(bonus ->
                 bonuse.add(Bonus.builder()
                         .idBonus(bonus.getIdBonus())
-                                .numeBonus(bonus.getNumeBonus())
+                        .numeBonus(bonus.getNumeBonus())
+                        .idBeneficiu(bonus.getIdBeneficiu())
                         .build()));
         return bonuse;
     }
@@ -37,10 +39,10 @@ public class BonusService {
 
     }
 
-    public Bonus adaugaBonus(Bonus bonus){
+    public Bonus adaugaBonus(Bonus bonus, UUID idBeneficiu){
         Bonus bonus1=Bonus.builder()
-                .idBonus(bonus.getIdBonus())
                 .numeBonus(bonus.getNumeBonus())
+                .idBeneficiu(idBeneficiu)
                 .build();
 
         bonusRepository.save(bonus1);

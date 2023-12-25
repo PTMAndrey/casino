@@ -16,7 +16,7 @@ public class Bonus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idBonus;
 
-    private Integer numeBonus;
+    private String numeBonus;
 
     private UUID idBeneficiu;
 

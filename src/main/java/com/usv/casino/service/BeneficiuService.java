@@ -29,6 +29,7 @@ public class BeneficiuService {
                                 .idBeneficiu(beneficiu.getIdBeneficiu())
                                 .procentDepunere(beneficiu.getProcentDepunere())
                                 .bani(beneficiu.getBani())
+                                .bonusuri(beneficiu.getBonusuri())
                         .build()));
         return beneficiue;
     }

@@ -29,5 +29,5 @@ public class Beneficiu {
             cascade = CascadeType.ALL
     )
     @JoinColumn(name="idBeneficiu", referencedColumnName = "idBeneficiu")
-    private List<Bonus> beneficiu = new ArrayList<>();
+    private List<Bonus> bonusuri = new ArrayList<>();
 }
