@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/utilizator")
-
 public class UtilizatorController {
 
     private final UtilizatorService utilizatorService;
@@ -18,17 +17,21 @@ public class UtilizatorController {
     public UtilizatorController(UtilizatorService utilizatorService) {
         this.utilizatorService = utilizatorService;
     }
+
     @GetMapping("/getAll")
-    public ResponseEntity<List<Utilizator>> getUtilizatori(){
+    public ResponseEntity<List<Utilizator>> getUtilizatori() {
         return ResponseEntity.ok(utilizatorService.getUtilizatori());
     }
+
     @GetMapping("/getByID")
     public ResponseEntity<Utilizator> getUtilizatorDupaId(@RequestParam UUID id) {
         return ResponseEntity.ok(utilizatorService.getUtilizatorDupaId(id));
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Utilizator> adaugaUtilizator(@RequestBody UtilizatorDTO utilizator) {
-        return ResponseEntity.ok(utilizatorService.adaugaUtilizator(utilizator));
+    public ResponseEntity<Utilizator> adaugaUtilizator(@RequestBody UtilizatorDTO utilizatorDTO) {
+        return ResponseEntity.ok(utilizatorService.adaugaUtilizator(utilizatorDTO));
     }
+
+    // Alte metode (actualizare, ștergere) pot fi adăugate aici, dacă este necesar
 }

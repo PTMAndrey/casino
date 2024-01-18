@@ -1,5 +1,6 @@
 package com.usv.casino.service;
 
+import com.usv.casino.dto.BeneficiuDTO;
 import com.usv.casino.entity.Beneficiu;
 import com.usv.casino.exceptions.CrudOperationException;
 import com.usv.casino.repository.BeneficiuRepository;
@@ -41,15 +42,31 @@ public class BeneficiuService {
 
     }
 
-    public Beneficiu adaugaBeneficiu(Beneficiu beneficiu){
+    public Beneficiu adaugaBeneficiu(BeneficiuDTO beneficiu){
         Beneficiu beneficiu1=Beneficiu.builder()
-                .idBeneficiu(beneficiu.getIdBeneficiu())
                 .procentDepunere(beneficiu.getProcentDepunere())
                 .bani(beneficiu.getBani())
                 .build();
 
         beneficiuRepository.save(beneficiu1);
         return beneficiu1;
+    }
+
+    public Beneficiu actualizareBeneficiu (UUID id, BeneficiuDTO beneficiu) {
+        Beneficiu beneficiuExistent = beneficiuRepository.findById(id).orElseThrow(() ->
+                new CrudOperationException(MESAJ_DE_EROARE));
+
+        beneficiuExistent.setProcentDepunere(beneficiu.getProcentDepunere());
+        beneficiuExistent.setBani(beneficiu.getBani());
+
+        return beneficiuRepository.save(beneficiuExistent);
+    }
+
+    public void stergeBeneficiu (UUID id) {
+        Beneficiu beneficiuExistent = beneficiuRepository.findById(id).orElseThrow(() ->
+                new CrudOperationException(MESAJ_DE_EROARE));
+
+        beneficiuRepository.delete(beneficiuExistent);
     }
 
 }

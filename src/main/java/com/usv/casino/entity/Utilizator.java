@@ -1,6 +1,7 @@
 package com.usv.casino.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.*;
+import com.usv.casino.enums.EnumTipBonus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +15,10 @@ import java.util.UUID;
 @Builder
 @Getter
 @Setter
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idUtilizator"
+)
 public class Utilizator {
 
     @Id
@@ -25,7 +30,7 @@ public class Utilizator {
     private String prenume;
 
     @Column(unique=true)
-    private String CNP;
+    private String cnp;
 
     private String adresa;
 
@@ -42,15 +47,15 @@ public class Utilizator {
 
     private Long balanta;
 
-    private String invitat;
+    private UUID idBonus;
+    private EnumTipBonus numeBonus;
 
-    @Column(unique=true)
-    private String codReferal;
-    private UUID idBonusUtilizatorU;
+    @Column(unique = true)
+    private String codulMeuReferal;
+    private String idCodulMeuReferal;
+    private Long numarReferiti;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "idUtilizator", referencedColumnName = "idUtilizator")
-//    private Card card;
+    private List<String> referiti = new ArrayList<>();
 
     @OneToMany(
             targetEntity = Pariu.class,

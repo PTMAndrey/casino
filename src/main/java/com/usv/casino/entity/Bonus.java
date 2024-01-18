@@ -1,8 +1,11 @@
 package com.usv.casino.entity;
 
+import com.usv.casino.enums.EnumTipBonus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -16,10 +19,20 @@ public class Bonus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idBonus;
 
-    private String numeBonus;
+    private EnumTipBonus numeBonus;
 
     private UUID idBeneficiu;
 
-    private UUID idBonusUtilizatorB;
+    @Transient
+    private Beneficiu beneficiu;
+
+    @OneToMany(
+            targetEntity = Utilizator.class,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name="idBonus", referencedColumnName = "idBonus")
+    private List<Utilizator> utilizatori= new ArrayList<>();
+
 
 }

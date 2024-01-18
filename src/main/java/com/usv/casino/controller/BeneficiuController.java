@@ -1,5 +1,6 @@
 package com.usv.casino.controller;
 
+import com.usv.casino.dto.BeneficiuDTO;
 import com.usv.casino.entity.Beneficiu;
 import com.usv.casino.service.BeneficiuService;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,22 @@ public class BeneficiuController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Beneficiu> adaugaBeneficiu(@RequestBody Beneficiu beneficiu) {
+    public ResponseEntity<Beneficiu> adaugaBeneficiu(@RequestBody BeneficiuDTO beneficiu) {
         return ResponseEntity.ok(beneficiuService.adaugaBeneficiu(beneficiu));
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Beneficiu> actualizareBeneficiu(@RequestParam UUID id, @RequestBody BeneficiuDTO beneficiu)
+    {
+        return ResponseEntity.ok(beneficiuService.actualizareBeneficiu(id,beneficiu));
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> stergeBeneficiu(@RequestParam UUID id){
+        beneficiuService.stergeBeneficiu(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     /* // MVC laborator
     @GetMapping("/adauga")
