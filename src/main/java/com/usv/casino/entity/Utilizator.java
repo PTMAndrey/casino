@@ -55,6 +55,8 @@ public class Utilizator {
     private String idCodulMeuReferal;
     private Long numarReferiti;
 
+
+    @ElementCollection
     private List<String> referiti = new ArrayList<>();
 
     @OneToMany(
