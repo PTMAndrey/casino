@@ -1,6 +1,7 @@
 package com.usv.casino.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.usv.casino.enums.EnumTipPariu;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,15 +18,12 @@ public class Pariu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idPariu;
 
-    //idUtilizator
-    // idJoc
-
     @JsonFormat(pattern = "$data.configuration.format", shape = JsonFormat.Shape.STRING)
     private String dataPariu;
 
-    private Integer sumaPariata;
+    private Long sumaPariata;
 
-    private String rezultatPariu;
+    private EnumTipPariu rezultatPariu;
 
     private UUID idUtilizator;
 

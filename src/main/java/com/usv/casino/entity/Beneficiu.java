@@ -1,6 +1,7 @@
 package com.usv.casino.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,15 +20,16 @@ public class Beneficiu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idBeneficiu;
 
-    private Integer procentDepunere;
+    private Long procentDepunere;
 
-    private Integer bani;
+    private Long bani;
 
+    @JsonIgnore
     @OneToMany(
             targetEntity = Bonus.class,
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
     @JoinColumn(name="idBeneficiu", referencedColumnName = "idBeneficiu")
-    private List<Bonus> beneficiu = new ArrayList<>();
+    private List<Bonus> bonusuri = new ArrayList<>();
 }

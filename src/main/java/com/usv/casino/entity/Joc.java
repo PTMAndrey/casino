@@ -19,7 +19,7 @@ public class Joc {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idJoc;
 
-    private Integer numeJoc;
+    private String numeJoc;
 
     @OneToMany(
             targetEntity = Pariu.class,

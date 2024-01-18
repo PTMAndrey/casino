@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaugare Beneficiu</title>
+</head>
+<body>
+<h1>Adaugare Beneficiu</h1>
+
+<form action="http://localhost:8080/beneficiu/adauga" method="post" th:object="${beneficiu}">
+    <label for="procentDepunere">Procent Depunere:</label>
+    <input type="text" id="procentDepunere" name="procentDepunere" th:field="*{procentDepunere}" /><br>
+
+    <label for="bani">Bani:</label>
+    <input type="text" id="bani" name="bani" th:field="*{bani}" /><br>
+
+    <button type="submit">Adauga Beneficiu</button>
+</form>
+
+</body>
+</html>
